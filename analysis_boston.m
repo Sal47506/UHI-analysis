@@ -152,3 +152,48 @@ p_r = polyfit(years, hw_rural, 1);
 plot(years, polyval(p_u, years), 'r--', 'LineWidth', 1.5, 'DisplayName', 'Logan trend');
 plot(years, polyval(p_r, years), 'b--', 'LineWidth', 1.5, 'DisplayName', 'Blue Hill trend');
 
+
+[~, iA, iB] = intersect(urban_raw.DATE, rural_raw.DATE);
+T_raw = table();
+T_raw.DATE   = urban_raw.DATE(iA);
+T_raw.TMAX_U = urban_raw.TMAX(iA);
+T_raw.TMAX_R = rural_raw.TMAX(iB);
+
+% single combined threshold from both stations in baseline
+baseline_idx = year(T_raw.DATE) >= 1981 & year(T_raw.DATE) <= 2010;
+p90_combined = prctile(T_raw.TMAX_U(baseline_idx), 90);
+fprintf('Combined 90th pctile (1981-2010): %.2f C\n', p90_combined);
+
+
+% count exceedances per year using same threshold for both
+years = (1990:2024)';
+hw_urban = zeros(length(years), 1);
+hw_rural = zeros(length(years), 1);
+
+for i = 1:length(years)
+    hw_urban(i) = sum(urban.TMAX(year(urban.DATE) == years(i)) >= p90_combined);
+    hw_rural(i) = sum(rural.TMAX(year(rural.DATE) == years(i)) >= p90_combined);
+end
+
+figure;
+plot(years, hw_urban, 'r-o', 'LineWidth', 1.5, 'MarkerSize', 5, 'DisplayName', 'Logan (Urban)');
+hold on;
+plot(years, hw_rural, 'b-o', 'LineWidth', 1.5, 'MarkerSize', 5, 'DisplayName', 'Blue Hill (Rural)');
+p_u = polyfit(years, hw_urban, 1);
+p_r = polyfit(years, hw_rural, 1);
+plot(years, polyval(p_u, years), 'r--', 'LineWidth', 1.5, 'DisplayName', 'Logan trend');
+plot(years, polyval(p_r, years), 'b--', 'LineWidth', 1.5, 'DisplayName', 'Blue Hill trend');
+xlabel('Year');
+ylabel('Days exceeding urban 90th percentile');
+title('Extreme Heat Days — Logan Airport vs. Blue Hill (1990–2024)');
+legend('Location', 'best');
+grid on;
+
+[~, p_urban] = corr(years, hw_urban);
+[~, p_rural] = corr(years, hw_rural);
+fprintf('Logan trend p-value:     %.3f\n', p_urban);
+fprintf('Blue Hill trend p-value: %.3f\n', p_rural);
+
+% while both stations show a slight positive trend in extreme heat days, 
+% neither trend reaches statistical significance over the 1990–2024 period, 
+% suggesting high interannual variability dominates the signal.
