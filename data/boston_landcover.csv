@@ -24,15 +24,15 @@ HUC_12,Name,ImpervFrac,TreeCanopyPct,Population
 010900010803,Outlet Neponset River,37.6435286480248,41.0382994069562,167604
 010900010901,Monatiquot River,42.5312315744266,38.5043448491868,163187
 010900010902,Weir River,26.0753207769787,51.1945037955773,69590
-010900010903,Hingham Bay-Frontal Quincy Bay,,,
-010900011003,North River-Massachusetts Bay,,,
-010900011005,Boston Harbor,,,
-010900011006,Broad Sound-Massachusetts Bay,,,
-010900011007,Nahant Bay-Massachusetts Bay,,,
-010900011008,Martin Ledge-Massachusetts Bay,,,
-010900011009,Quincy Bay,,,
-010900011010,Strawberry Ledge-Massachusetts Bay,,,
-010900011011,Aaron River-Cohasset Harbor,,,
+010900010903,Hingham Bay-Frontal Quincy Bay,NaN,NaN,NaN
+010900011003,North River-Massachusetts Bay,NaN,NaN,NaN
+010900011005,Boston Harbor,NaN,NaN,NaN
+010900011006,Broad Sound-Massachusetts Bay,NaN,NaN,NaN
+010900011007,Nahant Bay-Massachusetts Bay,NaN,NaN,NaN
+010900011008,Martin Ledge-Massachusetts Bay,NaN,NaN,NaN
+010900011009,Quincy Bay,NaN,NaN,NaN
+010900011010,Strawberry Ledge-Massachusetts Bay,NaN,NaN,NaN
+010900011011,Aaron River-Cohasset Harbor,NaN,NaN,NaN
 010900020101,Headwaters Indian Head River,24.6794681527698,53.1537388562072,30697
 010900020102,Indian Head River-North River,12.0617020800882,60.7918035840692,32083
 010900040102,Matfield River,32.0833564482101,44.2892680834602,109276
