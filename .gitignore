@@ -1,3 +1,21 @@
+# MATLAB
 *.asv
+*.m~
+*.mat
+slprj/
+octave-workspace
+
+# Editor / OS
 *~
 *.un~
+*.swp
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Notes
+*.md
