@@ -19,6 +19,7 @@ Thumbs.db
 
 # Notes
 *.md
+!README.md
 
 # Generated outputs
 data/boston_landcover.csv
